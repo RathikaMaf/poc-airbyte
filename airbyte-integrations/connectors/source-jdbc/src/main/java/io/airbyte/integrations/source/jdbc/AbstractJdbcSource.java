@@ -118,7 +118,7 @@ public abstract class AbstractJdbcSource<Datatype> extends AbstractRelationalDbS
   }
 
   @Override
-  protected List<TableInfo<CommonField<Datatype>>> discoverInternal(final JdbcDatabase database, final String schema) throws Exception {
+  protected List<TableInfo<CommonField<Datatype>>> discoverInternal(final JdbcDatabase database, final String schema) throws Exception {     
     final Set<String> internalSchemas = new HashSet<>(getExcludedInternalNameSpaces());
     LOGGER.info("Internal schemas to exclude: {}", internalSchemas);
     final Set<JdbcPrivilegeDto> tablesWithSelectGrantPrivilege = getPrivilegesTableForCurrentUser(database, schema);
@@ -156,7 +156,7 @@ public abstract class AbstractJdbcSource<Datatype> extends AbstractRelationalDbS
   }
 
   protected Predicate<JsonNode> excludeNotAccessibleTables(final Set<String> internalSchemas,
-                                                           final Set<JdbcPrivilegeDto> tablesWithSelectGrantPrivilege) {
+                                                           final Set<JdbcPrivilegeDto> tablesWithSelectGrantPrivilege) {    
     return jsonNode -> {
       if (tablesWithSelectGrantPrivilege.isEmpty()) {
         return isNotInternalSchema(jsonNode, internalSchemas);
@@ -172,6 +172,7 @@ public abstract class AbstractJdbcSource<Datatype> extends AbstractRelationalDbS
   // needs to override isNotInternalSchema for connectors that override
   // getPrivilegesTableForCurrentUser()
   protected boolean isNotInternalSchema(final JsonNode jsonNode, final Set<String> internalSchemas) {
+    
     return !internalSchemas.contains(jsonNode.get(INTERNAL_SCHEMA_NAME).asText());
   }
 

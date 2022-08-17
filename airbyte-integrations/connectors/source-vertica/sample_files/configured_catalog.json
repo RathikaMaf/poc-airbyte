@@ -1,0 +1,28 @@
+{
+    "streams": [
+      {
+        "stream": {
+        "name": "USERINFO",        
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            }
+          }
+        },
+        "supported_sync_modes": [
+          "full_refresh"          
+        ],
+        "supported_destination_sync_modes": ["append"],
+        "source_defined_cursor": false
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "append"
+      }
+    ]
+}

@@ -896,10 +896,11 @@ public class DefaultJobPersistence implements JobPersistence {
   /**
    * @return Java Values for the @param columnName in @param jsonNode
    */
-  private static Object getJsonNodeValue(final JsonNode jsonNode, final String columnName) {
+  private static Object getJsonNodeValue(final JsonNode jsonNode, final String columnName) {    
     if (!jsonNode.has(columnName)) {
       return null;
     }
+    
     final JsonNode valueNode = jsonNode.get(columnName);
     final JsonNodeType nodeType = valueNode.getNodeType();
     if (nodeType == JsonNodeType.OBJECT) {

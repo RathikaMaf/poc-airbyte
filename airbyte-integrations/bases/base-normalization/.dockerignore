@@ -11,3 +11,4 @@
 !dbt-project-template-clickhouse
 !dbt-project-template-snowflake
 !dbt-project-template-redshift
+!dbt-project-template-vertica

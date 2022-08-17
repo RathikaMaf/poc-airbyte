@@ -91,7 +91,7 @@ public class IntegrationRunner {
     validator = jsonSchemaValidator;
   }
 
-  public void run(final String[] args) throws Exception {
+  public void run(final String[] args) throws Exception {    
     final IntegrationConfig parsed = cliParser.parse(args);
     try {
       runInternal(parsed);
@@ -100,7 +100,7 @@ public class IntegrationRunner {
     }
   }
 
-  private void runInternal(final IntegrationConfig parsed) throws Exception {
+  private void runInternal(final IntegrationConfig parsed) throws Exception {    
     LOGGER.info("Running integration: {}", integration.getClass().getName());
     LOGGER.info("Command: {}", parsed.getCommand());
     LOGGER.info("Integration config: {}", parsed);

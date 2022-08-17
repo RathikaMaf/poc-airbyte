@@ -1,0 +1,58 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/vertica",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Vertica Source Spec",
+    "type": "object",
+    "required": ["host", "port", "database", "username"],
+    "properties": {
+      "host": {
+        "title": "Host",
+        "description": "Hostname of the database.",
+        "type": "string",
+        "order": 0
+      },
+      "port": {
+        "title": "Port",
+        "description": "Port of the database.",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65536,
+        "default": 5433,
+        "examples": ["5433"],
+        "order": 1
+      },
+      "database": {
+        "title": "Database",
+        "description": "Name of the database.",
+        "type": "string",
+        "order": 2
+      },
+      "schemas": {
+        "title": "Schemas",
+        "description": "The list of schemas (case sensitive) to sync from. Defaults to public.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 0,
+        "uniqueItems": true,
+        "default": ["public"],
+        "order": 3
+      },
+      "username": {
+        "title": "Username",
+        "description": "Username to use to access the database.",
+        "type": "string",
+        "order": 4
+      },
+      "password": {
+        "title": "Password",
+        "description": "Password associated with the username.",
+        "type": "string",
+        "airbyte_secret": true,
+        "order": 5
+      }
+    }
+  }
+}

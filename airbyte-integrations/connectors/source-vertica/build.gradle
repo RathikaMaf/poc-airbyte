@@ -1,0 +1,47 @@
+plugins {
+    id 'application'
+    id 'airbyte-docker'
+    id 'airbyte-integration-test-java'
+    id 'airbyte-standard-source-test-file'
+}
+
+application {
+    mainClass = 'io.airbyte.integrations.source.vertica.VerticaSource'
+}
+repositories {
+    maven { url "https://mvnrepository.com/artifact/com.vertica.jdbc/vertica-jdbc" }
+}
+
+airbyteStandardSourceTestFile {
+    specPath = "sample_files/spec.json"
+    configPath = "secrets/config.json"
+    configuredCatalogPath = "sample_files/configured_catalog.json"
+}
+
+dependencies {
+    implementation project(':airbyte-db:db-lib')
+    implementation project(':airbyte-integrations:bases:base-java')
+    implementation project(':airbyte-protocol:protocol-models')
+    implementation project(':airbyte-integrations:connectors:source-jdbc')
+    implementation project(':airbyte-integrations:connectors:source-relational-db')
+    
+    implementation 'com.vertica.jdbc:vertica-jdbc:12.0.0-0'
+
+    testImplementation 'org.apache.commons:commons-text:1.9'
+    testImplementation 'org.apache.commons:commons-lang3:3.11'
+    testImplementation 'org.apache.commons:commons-dbcp2:2.7.0'
+
+    //TODO Add jdbc driver import here. Ex: implementation 'com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre14'
+
+    testImplementation testFixtures(project(':airbyte-integrations:connectors:source-jdbc'))
+
+    testImplementation 'org.apache.commons:commons-lang3:3.11'
+
+    integrationTestJavaImplementation project(':airbyte-integrations:connectors:source-vertica')
+    integrationTestJavaImplementation project(':airbyte-integrations:bases:standard-source-test')
+    integrationTestJavaImplementation testFixtures(project(':airbyte-integrations:connectors:source-jdbc'))
+
+    implementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
+    implementation files(project(':airbyte-integrations:bases:base-standard-source-test-file').airbyteDocker.outputs)
+    integrationTestJavaImplementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
+}

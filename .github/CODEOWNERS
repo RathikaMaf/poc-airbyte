@@ -29,6 +29,7 @@
 /airbyte-integrations/connectors/source-oracle/ @airbytehq/jdbc-connectors
 /airbyte-integrations/connectors/source-postgres/ @airbytehq/jdbc-connectors
 /airbyte-integrations/connectors/source-redshift/ @airbytehq/jdbc-connectors
+/airbyte-integrations/connectors/source-vertica/ @airbytehq/jdbc-connectors
 /airbyte-integrations/connectors/source-snowflake/ @airbytehq/jdbc-connectors
 /airbyte-integrations/connectors/source-tidb/ @airbytehq/jdbc-connectors
 /airbyte-integrations/connectors/destination-jdbc/ @airbytehq/jdbc-connectors

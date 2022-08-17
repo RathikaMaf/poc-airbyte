@@ -842,6 +842,14 @@
   icon: redshift.svg
   sourceType: database
   releaseStage: alpha
+- name: Vertica
+  sourceDefinitionId: c38c8962-e531-43d8-a74c-58abb16cb93e
+  dockerRepository: airbyte/source-vertica
+  dockerImageTag: dev
+  documentationUrl: https://docs.airbyte.io/integrations/sources/vertica
+  icon: vertica.svg
+  sourceType: database
+  releaseStage: alpha
 - name: Retently
   sourceDefinitionId: db04ecd1-42e7-4115-9cec-95812905c626
   dockerRepository: airbyte/source-retently

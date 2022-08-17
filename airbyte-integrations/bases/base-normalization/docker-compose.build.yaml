@@ -50,3 +50,10 @@ services:
       context: .
       labels:
         io.airbyte.git-revision: ${GIT_REVISION}
+  normalization-vertica:
+    image: airbyte/normalization-vertica:${VERSION}
+    build:
+      dockerfile: vertica.Dockerfile
+      context: .
+      labels:
+        io.airbyte.git-revision: ${GIT_REVISION}

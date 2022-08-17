@@ -57,7 +57,7 @@ public class JsonSchemas {
    *
    * @param jsonNode - a json object with children that contain types.
    */
-  public static void mutateTypeToArrayStandard(final JsonNode jsonNode) {
+  public static void mutateTypeToArrayStandard(final JsonNode jsonNode) {    
     if (jsonNode.get(JSON_SCHEMA_TYPE_KEY) != null && !jsonNode.get(JSON_SCHEMA_TYPE_KEY).isArray()) {
       final JsonNode type = jsonNode.get(JSON_SCHEMA_TYPE_KEY);
       ((ObjectNode) jsonNode).putArray(JSON_SCHEMA_TYPE_KEY).add(type);

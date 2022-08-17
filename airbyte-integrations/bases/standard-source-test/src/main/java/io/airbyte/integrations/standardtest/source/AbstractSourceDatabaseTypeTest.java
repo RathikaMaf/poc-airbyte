@@ -142,12 +142,11 @@ public abstract class AbstractSourceDatabaseTypeTest extends AbstractSourceConne
         "The streamer " + streamName + " should return all expected values. Missing values: " + values));
   }
 
-  protected String getValueFromJsonNode(final JsonNode jsonNode) throws IOException {
+  protected String getValueFromJsonNode(final JsonNode jsonNode) throws IOException {  
     if (jsonNode != null) {
       if (jsonNode.isArray()) {
         return jsonNode.toString();
-      }
-
+      }      
       String value = (jsonNode.isBinary() ? Arrays.toString(jsonNode.binaryValue()) : jsonNode.asText());
       value = (value != null && value.equals("null") ? null : value);
       return value;
